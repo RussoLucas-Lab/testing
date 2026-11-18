@@ -1,0 +1,66 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+        chapter:
+          - name: document-editor
+            dir: document-editor
+            install: pip install -r requirements.txt
+            run: pytest
+          - name: fixture-scope
+            dir: fixture-scope
+            install: pip install -r requirements.txt
+            run: pytest
+          - name: hands-on
+            dir: hands-on
+            install: pip install -r requirements.txt
+            run: pytest
+          - name: pftracker
+            dir: pftracker
+            install: pip install -r requirements.txt
+            run: pytest
+          - name: user-analytics-api
+            dir: user-analytics-api
+            install: pip install -r requirements.txt
+            run: pytest
+          - name: unit-converter
+            dir: unit-converter
+            install: pip install -e ".[dev]"
+            run: pytest
+          - name: testing-levels
+            dir: testing-levels
+            install: pip install -e ".[dev]"
+            run: pytest
+          - name: CICD Unit Converter
+            dir: CICD Unit Converter
+            install: pip install -e ".[dev]"
+            run: pytest
+          - name: more-itertools
+            dir: more-itertools
+            install: pip install -e . && pip install pytest==8.4.1
+            run: pytest tests/test_custom.py
+    name: ${{ matrix.chapter.name }} (Python ${{ matrix.python-version }})
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.chapter.dir }}
+        run: ${{ matrix.chapter.install }}
+
+      - name: Run tests
+        working-directory: ${{ matrix.chapter.dir }}
+        run: ${{ matrix.chapter.run }}
