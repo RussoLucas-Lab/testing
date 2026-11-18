@@ -1,20 +1,20 @@
 # pftracker (Personal Finance Tracker)
 
-## Concepto
-Proyecto más grande que funciona como repaso integral de pytest: fixtures de distinto scope, `parametrize`, `pytest-mock` (fixture `mocker`), `monkeypatch`, `caplog`, `tmp_path`/`tmp_path_factory` y configuración vía `pytest.ini`.
+## Concept
+A larger project that serves as a comprehensive review of pytest: fixtures with different scopes, `parametrize`, `pytest-mock` (the `mocker` fixture), `monkeypatch`, `caplog`, `tmp_path`/`tmp_path_factory`, and configuration via `pytest.ini`.
 
-## Qué demuestra el código
-- `pftracker/`: paquete con `PersonalFinanceTracker` (categorías, transacciones, presupuestos mensuales y balance en moneda base), `storage.py` (backend `JsonFileStorage` con lock de archivo y escritura atómica) y `fx.py` (conversión de moneda vía `ECBRateProvider`, que usa el paquete `currency_converter`).
-- `tests/conftest.py`: fixtures `storage` y `tracker` (este último mockea el `exchange_provider` con `mocker.Mock()` para no depender de la red), y `clean_db`, un fixture no-op requerido por `usefixtures` en `pytest.ini`.
-- `tests/test_main.py`: suite grande organizada en clases (`TestCategories`, `TestTransactions`, `TestBudget`, `TestConversions`, `TestDefaultCurrency`, `TestLogging`, `TestPersistence`), con parametrización, mocking de `ECBRateProvider` vía `mocker.patch(..., autospec=True)`, `monkeypatch.setenv`, `caplog` y fixtures de scope `class` para probar persistencia entre instancias.
-- `tests/test_json_file_storage.py`: mockea `os.getpid` para verificar el contenido del lockfile.
-- `pytest.ini`: fija `addopts = -v`, `testpaths = tests` y `usefixtures = clean_db`.
+## What the code demonstrates
+- `pftracker/`: a package with `PersonalFinanceTracker` (categories, transactions, monthly budgets, and balance in a base currency), `storage.py` (a `JsonFileStorage` backend with file locking and atomic writes), and `fx.py` (currency conversion via `ECBRateProvider`, which uses the `currency_converter` package).
+- `tests/conftest.py`: `storage` and `tracker` fixtures (the latter mocks `exchange_provider` with `mocker.Mock()` to avoid depending on the network), and `clean_db`, a no-op fixture required by `usefixtures` in `pytest.ini`.
+- `tests/test_main.py`: a large suite organized into classes (`TestCategories`, `TestTransactions`, `TestBudget`, `TestConversions`, `TestDefaultCurrency`, `TestLogging`, `TestPersistence`), with parametrization, mocking `ECBRateProvider` via `mocker.patch(..., autospec=True)`, `monkeypatch.setenv`, `caplog`, and class-scoped fixtures to test persistence across instances.
+- `tests/test_json_file_storage.py`: mocks `os.getpid` to verify the lockfile's contents.
+- `pytest.ini`: sets `addopts = -v`, `testpaths = tests`, and `usefixtures = clean_db`.
 
-## Cómo correrlo
+## How to run it
 ```
 pip install -r requirements.txt
 ```
-Y desde esta carpeta:
+Then, from this folder:
 ```
 pytest
 ```

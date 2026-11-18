@@ -1,18 +1,18 @@
 # Document Editor
 
-## Concepto
-Capítulo introductorio de testing unitario con pytest: asserts básicos, `pytest.raises` para excepciones, y `pytest.mark.xfail` para documentar un bug conocido sin romper la suite.
+## Concept
+Introductory chapter on unit testing with pytest: basic asserts, `pytest.raises` for exceptions, and `pytest.mark.xfail` to document a known bug without breaking the suite.
 
-## Qué demuestra el código
-- `src/main.py`: clase `DocumentEditor` con `write`, `clear`, `is_empty` y `get_last_content`. Tiene un bug intencional: `history.append(self.content)` se ejecuta *antes* de actualizar `content`, por lo que `get_last_content()` siempre devuelve el contenido anterior al último `write`.
-- `tests/test_main.py`: cubre los casos normales de la clase y usa `@pytest.mark.xfail` sobre `test_get_last_content` para dejar constancia del bug sin que falle el pipeline, además de `pytest.raises` para el caso de historial vacío.
+## What the code demonstrates
+- `src/main.py`: `DocumentEditor` class with `write`, `clear`, `is_empty`, and `get_last_content`. It has an intentional bug: `history.append(self.content)` runs *before* `content` is updated, so `get_last_content()` always returns the content from before the last `write`.
+- `tests/test_main.py`: covers the class's normal cases and uses `@pytest.mark.xfail` on `test_get_last_content` to record the bug without failing the pipeline, plus `pytest.raises` for the empty-history case.
 
-## Cómo correrlo
-No hay dependencias externas, solo pytest:
+## How to run it
+No external dependencies, just pytest:
 ```
 pip install -r requirements.txt
 ```
-Y desde esta carpeta:
+Then, from this folder:
 ```
 pytest
 ```

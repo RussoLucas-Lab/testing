@@ -1,19 +1,19 @@
-# more-itertools — notas del curso
+# more-itertools — course notes
 
-Esta carpeta es la librería open-source [`more-itertools`](https://github.com/more-itertools/more-itertools) vendorizada tal cual, usada como "sandbox" para practicar cómo escribir tests contra una librería de terceros real. El `README.rst` original y el resto del código **no son material del curso** y no deben modificarse.
+This folder is the open-source [`more-itertools`](https://github.com/more-itertools/more-itertools) library, vendored as-is and used as a "sandbox" to practice writing tests against a real third-party library. The original `README.rst` and the rest of the code **are not course material** and should not be modified.
 
-El único archivo propio del curso es `tests/test_custom.py`.
+The only file authored for the course is `tests/test_custom.py`.
 
-## Qué demuestra `tests/test_custom.py`
-- `test_partition*`: prueba `more_itertools.partition`, que separa un iterable en dos listas según un predicado (incluyendo el caso de predicado `None` y de iterable vacío).
-- `test_interleave*`: prueba `more_itertools.interleave`, que combina varios iterables intercalando sus elementos (incluyendo listas de distinta longitud).
+## What `tests/test_custom.py` demonstrates
+- `test_partition*`: tests `more_itertools.partition`, which splits an iterable into two lists based on a predicate (including the `None`-predicate case and an empty iterable).
+- `test_interleave*`: tests `more_itertools.interleave`, which combines several iterables by interleaving their elements (including lists of different lengths).
 
-## Cómo correrlo
+## How to run it
 ```
 pip install -e .
 pip install pytest
 ```
-Y desde esta carpeta:
+Then, from this folder:
 ```
 pytest tests/test_custom.py
 ```

@@ -1,17 +1,17 @@
 # Fixture Scope
 
-## Concepto
-Demuestra el uso de `scope="session"` en una fixture de pytest: el fixture se crea una sola vez para toda la corrida en vez de reconstruirse en cada test.
+## Concept
+Demonstrates `scope="session"` on a pytest fixture: the fixture is created once for the whole run instead of being rebuilt for every test.
 
-## Qué demuestra el código
-- `src/main.py`: mini API con FastAPI (`/ping` y `/health`).
-- `tests/test_api.py`: define un fixture `client` con `scope="session"` que envuelve un `TestClient` de FastAPI, y lo reutiliza en `test_ping` y `test_health` sin recrearlo.
+## What the code demonstrates
+- `src/main.py`: a mini FastAPI API (`/ping` and `/health`).
+- `tests/test_api.py`: defines a `client` fixture with `scope="session"` that wraps a FastAPI `TestClient`, reused in `test_ping` and `test_health` without recreating it.
 
-## Cómo correrlo
+## How to run it
 ```
 pip install -r requirements.txt
 ```
-Y desde esta carpeta:
+Then, from this folder:
 ```
 pytest
 ```

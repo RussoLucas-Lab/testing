@@ -1,19 +1,19 @@
 # Hands-on: E-commerce Order Processing
 
-## Concepto
-Ejercicio práctico de testing unitario sobre una función de negocio con varias ramas (descuentos, stock, envío expedito), cubriendo casos felices y de error con `pytest.raises`.
+## Concept
+Hands-on unit-testing exercise on a business function with several branches (discounts, stock, expedited shipping), covering both happy and error paths with `pytest.raises`.
 
-## Qué demuestra el código
-- `src/ecommerce.py`: `process_order` calcula el total de una orden (con descuento para usuarios premium), valida stock/cantidad y estima la fecha de entrega según la hora del pedido.
-- `tests/test_ecommerce.py`: casos para orden simple, usuario premium, cantidad mayor al stock disponible y cantidad inválida (negativa).
-- `worker.feature`: archivo Gherkin vacío (placeholder). No hay `pytest-bdd` instalado ni tests que lo referencien, así que por ahora no forma parte de la suite ejecutable.
+## What the code demonstrates
+- `src/ecommerce.py`: `process_order` calculates an order's total (with a discount for premium users), validates stock/quantity, and estimates the delivery date based on the order's time.
+- `tests/test_ecommerce.py`: cases for a simple order, a premium user, a quantity above available stock, and an invalid (negative) quantity.
+- `worker.feature`: an empty Gherkin file (placeholder). No `pytest-bdd` is installed and no tests reference it, so it isn't part of the executable suite for now.
 
-## Cómo correrlo
-No hay dependencias externas, solo pytest:
+## How to run it
+No external dependencies, just pytest:
 ```
 pip install -r requirements.txt
 ```
-Y desde esta carpeta:
+Then, from this folder:
 ```
 pytest
 ```

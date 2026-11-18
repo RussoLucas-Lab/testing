@@ -2,50 +2,50 @@
 
 [![Tests](https://github.com/RussoLucas-Lab/pytest-github-actions/actions/workflows/tests.yml/badge.svg)](https://github.com/RussoLucas-Lab/pytest-github-actions/actions/workflows/tests.yml)
 
-Repo personal de práctica siguiendo el curso de Udemy de **Artem Istranin** sobre testing con
-Pytest e integración continua con GitHub Actions. _(agregar acá el link al curso)_.
+Personal practice repo following **Artem Istranin**'s Udemy course on testing with Pytest and
+continuous integration with GitHub Actions. _(add the course link here)_.
 
-Cada carpeta es un capítulo independiente: un mini-proyecto autocontenido que demuestra un
-concepto puntual de pytest (fixtures, parametrize, mocking, niveles de testing, CI/CD, etc.).
+Each folder is an independent chapter: a self-contained mini-project demonstrating a specific
+pytest concept (fixtures, parametrize, mocking, testing levels, CI/CD, etc.).
 
-## Temario
+## Table of contents
 
-| Capítulo | Qué demuestra |
+| Chapter | What it demonstrates |
 |---|---|
-| [document-editor](document-editor/) | Testing unitario básico: asserts, `pytest.raises`, `pytest.mark.xfail` para documentar un bug conocido. |
-| [fixture-scope](fixture-scope/) | Fixtures con `scope="session"` sobre un `TestClient` de FastAPI compartido. |
-| [hands-on](hands-on/) | Ejercicio práctico de testing de una función de negocio (procesamiento de órdenes e-commerce). |
-| [pftracker](pftracker/) | Repaso integral: fixtures de distinto scope, `parametrize`, `pytest-mock`, `monkeypatch`, `caplog`, `pytest.ini`. |
-| [user-analytics-api](user-analytics-api/) | API FastAPI con mockeo de dependencias lentas/externas, variables de entorno y upload de archivos. |
-| [unit-converter](unit-converter/) | Librería de conversión de unidades (CLI con Typer) — versión base. |
-| [testing-levels](testing-levels/) | La misma librería, organizada explícitamente en los tres niveles de testing: unit, integration, system. |
-| [CICD Unit Converter](CICD%20Unit%20Converter/) | La misma librería con su propio pipeline de CI (GitHub Actions). Continúa como repo independiente en [RussoLucas-Lab/CI-CD-unit-converter](https://github.com/RussoLucas-Lab/CI-CD-unit-converter). |
-| [more-itertools](more-itertools/README.student.md) | Librería open-source `more-itertools` vendorizada, usada como sandbox para testear código de terceros (`tests/test_custom.py`). |
-| [rund-and-debug](rund-and-debug/) | Carpeta vacía — pendiente. |
+| [document-editor](document-editor/) | Basic unit testing: asserts, `pytest.raises`, `pytest.mark.xfail` to document a known bug. |
+| [fixture-scope](fixture-scope/) | `scope="session"` fixtures over a shared FastAPI `TestClient`. |
+| [hands-on](hands-on/) | Hands-on testing exercise for a business function (e-commerce order processing). |
+| [pftracker](pftracker/) | Comprehensive review: fixtures with different scopes, `parametrize`, `pytest-mock`, `monkeypatch`, `caplog`, `pytest.ini`. |
+| [user-analytics-api](user-analytics-api/) | FastAPI API with mocked slow/external dependencies, environment variables, and file uploads. |
+| [unit-converter](unit-converter/) | Unit conversion library (CLI with Typer) — base version. |
+| [testing-levels](testing-levels/) | The same library, explicitly organized into the three testing levels: unit, integration, system. |
+| [CICD Unit Converter](CICD%20Unit%20Converter/) | The same library with its own CI pipeline (GitHub Actions). Continues as an independent repo at [RussoLucas-Lab/CI-CD-unit-converter](https://github.com/RussoLucas-Lab/CI-CD-unit-converter). |
+| [more-itertools](more-itertools/README.student.md) | The open-source `more-itertools` library, vendored and used as a sandbox for testing third-party code (`tests/test_custom.py`). |
+| [rund-and-debug](rund-and-debug/) | Empty folder — pending. |
 
-## Instalación
+## Installation
 
 ```bash
 git clone https://github.com/RussoLucas-Lab/pytest-github-actions.git
 cd pytest-github-actions
 python -m venv venv
-source venv/bin/activate   # En Windows: venv\Scripts\activate
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Ese `requirements.txt` cubre los capítulos sueltos (document-editor, fixture-scope, hands-on,
-pftracker, user-analytics-api). Los capítulos empaquetados (unit-converter, testing-levels,
-CICD Unit Converter, more-itertools) se instalan aparte con `pip install -e .` (o
-`-e ".[dev]"`) desde su propia carpeta — ver el README de cada uno.
+That `requirements.txt` covers the standalone chapters (document-editor, fixture-scope,
+hands-on, pftracker, user-analytics-api). The packaged chapters (unit-converter,
+testing-levels, CICD Unit Converter, more-itertools) are installed separately with
+`pip install -e .` (or `-e ".[dev]"`) from their own folder — see each one's README.
 
-## Correr los tests
+## Running the tests
 
-Cada capítulo se corre de forma independiente, parado en su propia carpeta:
+Each chapter runs independently, from inside its own folder:
 
 ```bash
 cd fixture-scope
 pytest
 ```
 
-El workflow de GitHub Actions (`.github/workflows/tests.yml`) corre la suite de cada capítulo
-por separado en cada push y pull request.
+The GitHub Actions workflow (`.github/workflows/tests.yml`) runs each chapter's suite
+separately on every push and pull request.
