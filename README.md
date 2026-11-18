@@ -1,9 +1,9 @@
 # Pytest & GitHub Actions
 
-[![Tests](https://github.com/RussoLucas-Lab/pytest-github-actions/actions/workflows/tests.yml/badge.svg)](https://github.com/RussoLucas-Lab/pytest-github-actions/actions/workflows/tests.yml)
+[![Tests](https://github.com/RussoLucas-Lab/testing/actions/workflows/tests.yml/badge.svg)](https://github.com/RussoLucas-Lab/testing/actions/workflows/tests.yml)
 
-Personal practice repo following **Artem Istranin**'s Udemy course on testing with Pytest and
-continuous integration with GitHub Actions. _(add the course link here)_.
+Personal practice repo following [Artem Istranin](https://www.udemy.com/user/artem-istranin/)'s
+Udemy course on testing with Pytest and continuous integration with GitHub Actions.
 
 Each folder is an independent chapter: a self-contained mini-project demonstrating a specific
 pytest concept (fixtures, parametrize, mocking, testing levels, CI/CD, etc.).
@@ -26,8 +26,8 @@ pytest concept (fixtures, parametrize, mocking, testing levels, CI/CD, etc.).
 ## Installation
 
 ```bash
-git clone https://github.com/RussoLucas-Lab/pytest-github-actions.git
-cd pytest-github-actions
+git clone https://github.com/RussoLucas-Lab/testing.git
+cd testing
 python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
